@@ -1,11 +1,12 @@
+
 import numpy as np
 import pandas as pd
 
 X=np.genfromtxt("matrix.txt")
 print(X)
 
-matriz = np.genfromtxt("matrix.txt")
-vector = np.genfromtxt("matrix.txt")
+matriz = np.matrix(np.genfromtxt("matrix.txt"))
+vector = np.matrix(np.genfromtxt("matrix.txt"))
 
 U = np.shape(matriz)
 V = matriz.size
