@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+    body 
+    {
+        font-size:18pt;
+    }
+    #filedrop 
+    {
+        width: 300px;
+        height: 200px;
+        color: Gray;
+        border: 10px dashed #9a9a9a;
+    }
+</style>
+<title>Lectura de un archivo txt</title>
+<script type="text/javascript">
+    function init() {
+        var bHaveFileAPI = (window.File && window.FileReader);
+
+        if (!bHaveFileAPI) {
+            alert("This browser doesn't support the File API");
+            return;
+        }
+
+         document.getElementById("filedrop").addEventListener("drop", onFilesDropped);
+        document.getElementById("filedrop").addEventListener("dragover", onDragOver);
+        document.getElementById("fileElem").addEventListener("change", onFileChanged);
+
+    }
+
+    function onFileChanged(theEvt) {
+        var thefile = theEvt.target.files[0];
+        console.log(thefile);
+
+        
+        if (thefile.type != "text/plain") {
+            document.getElementById('filecontents').innerHTML = "No text file chosen";
+            return;
+        }
+
+        var reader = new FileReader();
+
+        reader.onload = function (evt) {
+            var resultText = evt.target.result;
+            document.getElementById('filecontents').innerHTML = resultText;
+        }
+
+        reader.readAsText(thefile);
+    }
+
+     function onDragOver(theEvt) {
+        theEvt.stopPropagation();
+        theEvt.preventDefault();
+    }
+
+    function onFilesDropped(theEvt) {
+        theEvt.stopPropagation();
+        theEvt.preventDefault();
+
+        var files = theEvt.target.files;
+
+        document.getElementById('filedata').innerHTML = "";
+
+        for (var i = 0; i <= files.length; i++) {
+            var fileInfo = "<p>File name: " + files[i].name + "; size: " + files[i].size + "; type: " + files[i].type + "</p>";
+            document.getElementById('filedata').innerHTML += fileInfo;
+        }
+    }
+
+    window.addEventListener("load", init);
+</script>
+</head>
+<body>
+<h1> Drag and Drop</h1>
+<p>Drop here: </p>
+<div id="filedrop"></div>
+<p>Informacion del archivo: </p>
+<div id="filedata"></div>
+<h1>Lectura de los datos como texto</h1>
+<form action="">
+<label>Selecciona un archivo: </label>
+<input type="file" name="files" id="fileElem" />
+</form>
+<p>Contenido del archivo: </p>
+<textarea cols="80" rows="10" id="filecontents"></textarea>
+</body>
+</html>
