@@ -1,4 +1,4 @@
-archivo = open("archivo.txt", "r") # abre el archivo en modo lectura
+archivo = open("matrix.txt", "r") # abre el archivo en modo lectura
 
 numeros = [] # lista para almacenar los números
 num_filas = 0  # Contador de filas
@@ -21,7 +21,7 @@ for linea in archivo:
 
 archivo.close() # cierra el archivo
 
-#verifica qeu no sean ceros
+#verifica que no sean ceros
 
 
 
