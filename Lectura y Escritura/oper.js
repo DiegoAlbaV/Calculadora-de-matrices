@@ -1,71 +1,104 @@
-document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
-	const dropZoneElement = inputElement.closest(".drop-zone");
+const dropArea = document.querySelector(".drop-area");
+const dragText = dropArea.querySelector("h2");
+const button = dropArea.querySelector("button");
+const input = dropArea.querySelector("#input-file");
+let files;
 
-	dropZoneElement.addEventListener("click", (e) => {
-		inputElement.click();
-	});
+button.addEventListener
+('click',e =>
+{
+    input.click();
+}
+)
 
-	inputElement.addEventListener("change", (e) => {
-		if (inputElement.files.length) {
-			updateThumbnail(dropZoneElement, inputElement.files[0]);
-		}
-	});
-
-	dropZoneElement.addEventListener("dragover", (e) => {
-		e.preventDefault();
-		dropZoneElement.classList.add("drop-zone--over");
-	});
-
-	["dragleave", "dragend"].forEach((type) => {
-		dropZoneElement.addEventListener(type, (e) => {
-			dropZoneElement.classList.remove("drop-zone--over");
-		});
-	});
-
-	dropZoneElement.addEventListener("drop", (e) => {
-		e.preventDefault();
-
-		if (e.dataTransfer.files.length) {
-			inputElement.files = e.dataTransfer.files;
-			updateThumbnail(dropZoneElement, e.dataTransfer.files[0]);
-		}
-
-		dropZoneElement.classList.remove("drop-zone--over");
-	});
+input.addEventListener('change', (e) =>
+{
+    files = input.file;
+    dropArea.classList.add("active");
+    showFiles(files);
+    dropArea.classList.remove("active");
 });
 
-/**
- * Updates the thumbnail on a drop zone element.
- *
- * @param {HTMLElement} dropZoneElement
- * @param {File} file
- */
-function updateThumbnail(dropZoneElement, file) {
-	let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+dropArea.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    dropArea.classList.add("active");
+    dragText.textContent = "suelta para subir los archivos";
+})
 
-	// First time - remove the prompt
-	if (dropZoneElement.querySelector(".drop-zone__prompt")) {
-		dropZoneElement.querySelector(".drop-zone__prompt").remove();
-	}
+dropArea.addEventListener("dragleave", (e) => {
+    e.preventDefault();
+    dropArea.classList.remove("active");
+    dragText.textContent = "Arrastra y suelta imagenes";
+})
 
-	// First time - there is no thumbnail element, so lets create it
-	if (!thumbnailElement) {
-		thumbnailElement = document.createElement("div");
-		thumbnailElement.classList.add("drop-zone__thumb");
-		dropZoneElement.appendChild(thumbnailElement);
-	}
+dropArea.addEventListener("drop", (e) => {
+    e.preventDefault();
+    files = e.dataTransfer.files;
+    showFiles(files);
+    dropArea.classList.remove("active");
+    dragText.textContent = "Arrastra y suelta imagenes";
+})
 
-	thumbnailElement.dataset.label = file.name;
+function showFiles(files)
+{
+    if(files.length ==undefined)
+    {
+        processFile(files);
+    }
+    else
+    {
+        for(const file of files)
+        {
+            processFile(file);
+        }
+    }
+}
 
-	// Show thumbnail for image files
-	if (file.type.startsWith("image/")) {
-		const reader = new FileReader();
+function processFile(file)
+{
+    const docType = file.type;
+    const validExtensions = ['text/csv','text/txt', 'image/png', 'image/gif'];
 
-		reader.readAsDataURL(file);
-		reader.onload = () => {
-			thumbnailElement.style.backgroundImage = `url('${reader.result}')`;
-		};
-	} else {
-		thumbnailElement.style.backgroundImage = null;
-	}
+    if(validExtensions.includes(docType))
+    {
+        //archivo valido
+        const fileReader = new FileReader();
+        const id = 'file-${Math.random().toString(32).substring(7)}';
+
+        fileReader.addEventListener("load", (e) => 
+        {
+            const fileUrl = fileReader.result;
+            const image = '<div id = "${id}" class = "file-container"><img src="${fileUrl}" alt="${file.name}" width = "50"><div class="status"><span>${file.name}</span><span class="status-text">Loading...</span></div></img></div>;'
+
+            const html = document.querySelector("#preview").innerHTML;
+            document.querySelector('#preview').innerHTML= image + html;
+        });
+        fileReader.readAsDataURL(file);
+        uploadFile(file, id);
+    }
+    else
+    {
+        //no se vale
+        alert("no es un archivo valido");
+    }
+}
+
+async function uploadFile(file)
+{
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try
+    {
+        const response = await fetch("http://127.0.0.1:5500/lectura2.html",{method: 'POST', body: formData,});
+        
+        const responseText = await response.text();
+        console.log(responseText);
+        
+        document.querySelector('${id} .status-text').innerHTML = '<span class = "success">Archivo subido correctamente</span>';
+    }
+    catch(error)
+    {
+        document.querySelector('${id} .status-text').innerHTML = '<span class = "failure">el Archivo no se ha subido...</span>';
+    }
 }
