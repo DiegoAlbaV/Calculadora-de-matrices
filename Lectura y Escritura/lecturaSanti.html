@@ -1,7 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style type="text/css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Valdes Nava Javier">
+    <title>Drag and drop para subir archivos</title>
+    <!--script src="condiciones.js" defer></script-->
+    <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+    <div>
+        <div class="drop-area">
+            <h2>Arrastra y suelta imágenes</h2>
+            <span>0</span>
+            <button>selecciona tus archivos</button>
+            <input type="file" name="" id = "input-file" hidden multiple />
+        </div>
+        <div id="preview"></div>
+    
+        <script src="index.js"></script>
+    </div>
+
+    <!--style type="text/css">
     body 
     {
         font-size:18pt;
@@ -84,6 +105,6 @@
 <input type="file" name="files" id="fileElem" />
 </form>
 <p>Contenido del archivo: </p>
-<textarea cols="80" rows="10" id="filecontents"></textarea>
+<textarea cols="80" rows="10" id="filecontents"></textarea-->
 </body>
 </html>
