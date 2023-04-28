@@ -1,47 +1,85 @@
-.drop-zone {
-	max-width: 200px;
-	height: 200px;
-	padding: 25px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	font-family: "Quicksand", sans-serif;
-	font-weight: 500;
-	font-size: 20px;
-	cursor: pointer;
-	color: #cccccc;
-	border: 4px dashed #009578;
-	border-radius: 10px;
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.drop-zone--over {
-	border-style: solid;
+body
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
-.drop-zone__input {
-	display: none;
+.drop-area
+{
+    border: 5px dashed #ddd;
+    height: 500px;
+    width: 700px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.drop-zone__thumb {
-	width: 100%;
-	height: 100%;
-	border-radius: 10px;
-	overflow: hidden;
-	background-color: #cccccc;
-	background-size: cover;
-	position: relative;
+.drop-area.active
+{
+    background-color: #b8d4fe;
+    color: #000000;
+    border: 2px dashed #618ac9;
 }
 
-.drop-zone__thumb::after {
-	content: attr(data-label);
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 100%;
-	padding: 5px 0;
-	color: #ffffff;
-	background: rgba(0, 0, 0, 0.75);
-	font-size: 14px;
-	text-align: center;
+.drop-area h2
+{
+    font-size: 30px;
+    color: #000000;
+    font-weight: 500;
+}
+
+.drop-area span
+{
+    font-size: 25px;
+    font-weight: 500;
+    color:#000000;
+}
+
+.drop-area button
+{
+    padding: 10px 25px;
+    font-size: 20px;
+    border: 0;
+    outline: none;
+    background-color: #5256ad;
+    color:#FFFFFF;
+    border-radius: 5px;
+    cursor:pointer;
+    margin: 20px;
+}
+
+.file-container
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    border: solid px #ddd;
+}
+
+#preview
+{
+    margin-top: 0 10px;
+}
+
+.succces
+{
+    color: #52ad5a;
+}
+
+.failure
+{
+    color: #f00;
 }
