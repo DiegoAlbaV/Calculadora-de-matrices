@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="principal.css" rel="stylesheet">
+    
+    <title>Calculadora de Matrices</title>
+</head>
+<body>
+
+
+    <table id="tblmatrices" border="1">
+        <tr>
+          <th>MATRIZ</th>
+          <th>MATRIZ</th>
+          <th>MATRIZ RESULTANTE</th>
+        </tr>
+        <tr>
+          <td><input type="number"> </input> </td>
+          <td><input type="number"> </input> </td>
+          <td><input type="number"> </input> </td>  
+        </tr>
+    
+        <tr>
+            <td><input type="number"> </input> </td>
+            <td><input type="number"> </input> </td>
+            <td><input type="number"> </input> </td>  
+          </tr>    
+    </table>
+
+    <button class="button5" onclick="myFunction1()">-</button>
+    <button class="button5" onclick="myFunction2()">+</button>
+
+    
+    <button class="button6" onclick="myFunction3()">-</button>
+    <button class="button6" onclick="myFunction4()">+</button>
+
+    <script>
+
+function myFunction2() {
+    alert("Se elimino una columna");}
+
+    function myFunction1() {
+    alert("Se elimino una columna");}
+
+    function myFunction4() {
+    alert("Se agrego una nueva fila");}
+
+    function myFunction3() {
+    alert("Se elimino una fila");}
+
+    function myFunctioncalc() {
+    alert("Calculando la Matriz...");}
+    
+    function myFunctionborrar() {
+    alert("¿Desea borrar la matriz?");}
+
+function InsertarFila(){
+    let tblmatrices = document.getElementsById('tblmatrices').inserRow(0);
+let col1 = tblmatrices.inserCell(0);
+let col2 = tblmatrices.inserCell(1);
+
+col1.innerHTML = 'Nueva celda';
+col2.innerHTML = 'Nueva celda';
+    }
+
+</script>
+
+
+<input type="button" onclick="InsertarFila()" value="InsertarFila">
+
+
+<button class="buttoncalc" onclick="myFunctioncalc()">CALCULAR</button>
+
+
+<button class="buttonborrar" onclick="myFunctionborrar()">BORRAR</button>
+
+  </body>
+</html>
