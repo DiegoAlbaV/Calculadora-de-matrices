@@ -7,10 +7,14 @@ def gaussJ(a, m, n, arreglo):
         i=0
         while i < m:
             if a[i][j] != 0 :
+                pp = arreglo[i]
+                arreglo[i] = arreglo[z]
+                arreglo[z] = pp
                 for q in range(n):
                     p[q] = a[i][q]
                     a[i][q] = a[z][q]
                     a[z][q] = p[q]
+                arreglo[z] /= a[z][j]
                 d = a[z][j]
                 for q in range(n):
                     a[z][q] /= d
@@ -19,11 +23,13 @@ def gaussJ(a, m, n, arreglo):
                         g = a[h][j];
                         for r in range(n):
                             a[h][r] = a[h][r] - (a[z][r] * g)
+                        arreglo[h] = arreglo[h] - (arreglo[z] * g)
                 if z != 0 :
                     for t in range(z):
                         s = a[t][j];
                         for w in range(n):
                             a[t][w] = a[t][w] - (a[z][w] * s)
+                        arreglo[t] = arreglo[t] - (arreglo[z] * s)
                 z += 1
                 i = z-1
                 j = j+1
