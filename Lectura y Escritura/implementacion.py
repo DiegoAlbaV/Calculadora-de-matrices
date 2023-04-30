@@ -33,6 +33,7 @@ print("Matriz: ", matriz)
 print("Número de filas: ", num_rows)
 print("Número de columnas: ", num_cols)
 
-matriz_resultante = matriz
-num_filas_resultante = num_rows
-num_columnas_resultante = num_cols
+arreglo = matriz
+m = num_rows
+n = num_cols
+
