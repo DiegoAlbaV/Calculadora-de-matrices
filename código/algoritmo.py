@@ -32,6 +32,8 @@ def gaussJ(a, m, n, arreglo):
                         arreglo[t] = arreglo[t] - (arreglo[z] * s)
                 z += 1
                 i = z-1
+                if j == m-1 :
+                    break
                 j = j+1
             i += 1
         j += 1
