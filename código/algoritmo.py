@@ -4,6 +4,7 @@ def gaussJ(a, m, n, arreglo):
     z = 0
     p = [0 for x in range(n)]
     while j < n:
+        i=z
         while i < m:
             if a[i][j] != 0 :
                 pp = arreglo[i]
