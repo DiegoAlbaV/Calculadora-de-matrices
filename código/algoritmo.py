@@ -1,5 +1,6 @@
 def gaussJ(a, m, n, arreglo):
     j = 0 
+    h=0
     i = 0
     z = 0
     p = [0 for x in range(n)]
