@@ -1,7 +1,7 @@
 def gaussJ(a, m, n, arreglo):
     j = 0 
     i = 0
-    z = 9
+    z = 0
     p = [0 for x in range(n)]
     while j < n:
         i=z
