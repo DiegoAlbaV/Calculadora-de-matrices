@@ -26,26 +26,35 @@
                  <div class="infosec1">
                     <h2>Introduce el numero de columnas y filas manualmente</h2>
                     <div class="tabla-responsive">
+                    <!-- SE AGREGÓ EL ELEMENTO 'form' PARA PODER REALIZAR UNA CONEXIÓN MEDIANTE FLASK DE MANERA SENCILLA Y PODER LEER LOS DATOS
+                    INGRESADOS POR EL USUARIO Y TRABAJARLOS CON LAS INSTRUCCIONES DEL ARCHIVO 'implementación.py', QUE RECIBE LOS DATOS
+                    MEDIANTE EL METODO "POST"-->
+                    <form action="implementacion.py" method="POST" name="F1">
                     <table id="matriz">
                         <tr>
-                            <td><input type="number" size="5" step="0.001" id = "entrada"/></td>
-                            <td><input type="number" size="5" step="0.001" id = "entrada"/></td>
-                            <td><input type="number" size="5" step="0.001" id = "entrada"/></td>
-                         
+                            <!--PARA FINES DE PRUEBAS, TODOS LOS ATRIBUTOS 'VALUE' TIENEN UN NÚMERITO POR DEFAULT, 
+                            PERO ESE NÚMERO CAMBIA AL QUE EL USUARIO INGRESE-->
+                            <td><input type="text" size="5" class = "entrada" name="entry" value="1/2"/></td>
+                            <td><input type="text" size="5" class = "entrada" name="entry" value="2/4"/></td>
+                            <td><input type="text" size="5" class = "entrada" name="entry" value="3/6"/></td>
+                        
                         </tr>
                         <tr>
-                            <td><input type="number" size="5" step="0.001" id = "entrada"/></td>
-                            <td><input type="number" size="5" step="0.001" id = "entrada"/></td>
-                            <td><input type="number" size="5" step="0.001" id = "entrada"/></td>
-                           
+                            <td><input type="text" size="5" class = "entrada" name="entry" value="4"/></td>
+                            <td><input type="text" size="5" class = "entrada" name="entry" value="5"/></td>
+                            <td><input type="text" size="5" class = "entrada" name="entry" value="6"/></td>
                         </tr>
                         <tr>
-                            <td><input type="number" size="5" step="0.001" id = "entrada"/></td>
-                            <td><input type="number" size="5" step="0.001" id = "entrada"/></td>
-                            <td><input type="number" size="5" step="0.001" id = "entrada"/></td>
-                           
+                            <td><input type="text" size="5" class = "entrada" name="entry" value="7"/></td>
+                            <td><input type="text" size="5" class = "entrada" name="entry" value="8"/></td>
+                            <td><input type="text" size="5" class = "entrada" name="entry" value="9"/></td> 
                         </tr>
                     </table>
+                    <!--ESTE BOTON DE AQUÍ SE AGREGÓ PARA PODER EJECUTAR EL ARCHIVO 'implementación.py' Y PODER OBTENER LOS VALORES
+                    INGRESADOS POR EL USUARIO MEDIANTE EL METODO 'POST'; Y GUARDARLOS PARA HACER EL GAUSS-JORDAN CON EL ARCHIVO
+                    'algoritmo.py' SE PUEDE EDITAR EL ESTILO SOLO PONIENDOLE LA CLASE 'class = "boton1" '-->
+                    <button type = "submit"> Validar Matriz </button>
+                    </form>
                 </div>
                     <span>
                 
@@ -56,8 +65,9 @@
                       
                      </span>
                      <span class="calculos">
-                        <a class="boton1" href="#" onclick="calcular()">Calcular</a>
-                        <a  class="boton1" href="#" onclick="borrarNumeros()">Borrar</a>
+                         <a class="boton1" href="#" onclick="calcular()"><input class = "boton1" type="submit" value="calcular"></a>
+                         <!--a class="boton1" href="#" onclick="calcular()">Calcular</a-->
+                         <a  class="boton1" href="#" onclick="borrarNumeros()">Borrar</a>
                       </span>
 
                       
