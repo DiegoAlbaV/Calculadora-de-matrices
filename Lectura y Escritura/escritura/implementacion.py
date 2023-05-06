@@ -111,5 +111,5 @@ os.system(f"python algoritmo.py {a} {m} {n} {' '.join(map(str, arreglo))}")
 """Observación:
 Para leer entradas ingresadas por el usuario, se agregó en el HTML el Boton
 "Validar Matríz"; que mediante el metodo "POST", lee los datos ingresados por
-el usuario y se ejecuta este código de Python"""
+el usuario y se ejecuta este código de Python :D"""
 
