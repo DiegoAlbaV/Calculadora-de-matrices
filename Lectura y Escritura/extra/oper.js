@@ -102,3 +102,5 @@ async function uploadFile(file)
         document.querySelector('${id} .status-text').innerHTML = '<span class = "failure">el Archivo no se ha subido...</span>';
     }
 }
+
+//Anomanches ¿qué es esto :3?
