@@ -1,7 +1,11 @@
 from bs4 import BeautifulSoup
 import requests
+import os
 
-with open("index.html") as file:
+
+from fractions import Fraction
+
+with open("Manual.html") as file:
     html = file.read()
 
 soup = BeautifulSoup(html, 'html.parser')
@@ -37,3 +41,4 @@ arreglo = matriz
 m = num_rows
 n = num_cols
 
+os.system(f"python algoritmo.py {a} {m} {n} {' '.join(map(str, arreglo))}")
