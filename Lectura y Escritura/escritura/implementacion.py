@@ -66,11 +66,9 @@ for row in rows:                        ##crea el arreglo de filas y lo va
     for cell in row.find_all("td"):     ##va leyendo todas las celdas y entradas
                                         ##del usuario
         valor = cell.find("input").get("value")
-        print("valor:", valor)
         """if "/" in valor:
             try:
                 vel = valor.split("/")
-                print(vel)
                 fraccion = Fraction(int(vel[0]), int(vel[1]))
                 print("si pasé por aquí: ", fraccion)
                 print("es un tipo de dato: ", type(fraccion))
@@ -85,7 +83,7 @@ for row in rows:                        ##crea el arreglo de filas y lo va
                 if "/" in valor:
                     vel = valor.split("/")
                     fraccion = Fraction(int(vel[0]), int(vel[1]))
-                    fila.append(str(fraccion))
+                    fila.append(fraccion)
                     continue
                 else:
                     print("Error: Ingrese un valor numérico")
@@ -98,13 +96,14 @@ for row in rows:                        ##crea el arreglo de filas y lo va
     matriz.append(fila) ##mete el arreglo de filas en el arreglo de la matriz
                         ##y continúa hasta quedarse sin filas o columnas que leer
 
-print("Matriz: ", matriz)               ##Nos muestra la matriz en modo de arreglo, por default tiene 9 elementos
-print("Número de filas: ", num_rows)    ##nos indica cuantas filas hubo en total, por default siempre es 3
-print("Número de columnas: ", num_cols) ##nos indica cuantas columnas hubo en total, por default siempre es de 3
+##print("Matriz: ", matriz)               ##Nos muestra la matriz en modo de arreglo, por default tiene 9 elementos
+##print("Número de filas: ", num_rows)    ##nos indica cuantas filas hubo en total, por default siempre es 3
+##print("Número de columnas: ", num_cols) ##nos indica cuantas columnas hubo en total, por default siempre es de 3
 
 arreglo = matriz                        ##guarda la matriz como un arreglo para hacerle Gauss-Jordan
 m = num_rows                            ##guarda el número de filas para meterlo en el código de Gauss-Jordan
 n = num_cols                            ##guarda el número de columnas para meterlo en el código de Gauss-Jordan
+a = []
 
 os.system(f"python algoritmo.py {a} {m} {n} {' '.join(map(str, arreglo))}")
 
